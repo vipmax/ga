@@ -5,11 +5,7 @@ import competition.FitnessEvaluator;
  */
 public class MyFittnessEvaluator implements FitnessEvaluator {
 
-    private int result;
-
-
-    public MyFittnessEvaluator() {
-    }
+    private double result;
 
     @Override
     public double evaluate(double[] genotype) {
@@ -17,11 +13,13 @@ public class MyFittnessEvaluator implements FitnessEvaluator {
         for(int i = 0; i < problemDimension(); ++i)
             fitness += genotype[i];
 
-        result = fitness;
-        if (result < 0) result = 0;
-//        if (result > 10) result = 10;
+        result = fitness / (problemDimension() * 0.5) - 1;
 
-        return fitness;
+        if (result < 0) result = 0;
+
+//        System.out.println("result = " + result);;
+
+        return result;
     }
 
     @Override

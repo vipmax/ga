@@ -18,10 +18,6 @@ public class Individual
         return fitnessValue;
     }
 
-    public void setFitnessValue(double fitnessValue) {
-        this.fitnessValue = fitnessValue;
-    }
-
     public double getGene(int index) {
         return genes[index];
     }
@@ -45,7 +41,16 @@ public class Individual
 
     public double evaluate(FitnessEvaluator evaluator) {
         double fitness = evaluator.evaluate(genes);
-        this.setFitnessValue(fitness);
+
+        fitnessValue = fitness;
         return fitness;
+    }
+
+    @Override
+    public String toString() {
+        return "Individual{" +
+                "fitnessValue=" + fitnessValue +
+                ", genes=" + Arrays.toString(genes) +
+                '}';
     }
 }

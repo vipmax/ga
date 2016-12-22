@@ -81,11 +81,11 @@ public class MyAlg implements Algorithm {
 
             // reevaluate current population
             population.evaluate(evaluator);
-            System.out.printf("Total Fitness = %s Best Fitness = %s%n",
-                    population.totalFitness, population.findBestIndividual().getFitnessValue());
+            System.out.printf("Total Fitness = %s Best Fitness = %s%n", population.totalFitness, population.findBestIndividual().getFitnessValue());
         }
 
         // best indiv
         Individual bestIndiv = population.findBestIndividual();
+        System.out.println("bestIndividual = " + bestIndiv);
     }
 }
