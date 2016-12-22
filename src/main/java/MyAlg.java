@@ -8,11 +8,11 @@ import java.util.Random;
  */
 public class MyAlg implements Algorithm {
 
-    final static int ELITISM_K = 5;
-    final static int POP_SIZE = 200 + ELITISM_K;  // population size
-    final static int MAX_ITER = 2000;             // max number of iterations
-    final static double MUTATION_RATE = 0.05;     // probability of mutation
-    final static double CROSSOVER_RATE = 0.7;     // probability of crossover
+    private final static int ELITISM_K = 5;
+    private final static int POP_SIZE = 200 + ELITISM_K;  // population size
+    private final static int MAX_ITER = 2000;             // max number of iterations
+    private final static double MUTATION_RATE = 0.05;     // probability of mutation
+    private final static double CROSSOVER_RATE = 0.7;     // probability of crossover
 
     private FitnessEvaluator evaluator;
     private Population population ;
@@ -35,17 +35,12 @@ public class MyAlg implements Algorithm {
 
     @Override
     public void run() {
+
         Individual[] newPop = new Individual[POP_SIZE];
         Individual[] indiv = new Individual[2];
 
-        // current population
-        System.out.print("Total Fitness = " + population.totalFitness);
-        System.out.println("Best Fitness = " + population.findBestIndividual().getFitnessValue());
-
-        // main loop
-        int count;
         for (int iter = 0; iter < MAX_ITER; iter++) {
-            count = 0;
+            int count = 0;
 
             // Elitism
             for (int i=0; i<ELITISM_K; ++i) {
@@ -81,11 +76,12 @@ public class MyAlg implements Algorithm {
 
             // reevaluate current population
             population.evaluate(evaluator);
-            System.out.printf("Total Fitness = %s Best Fitness = %s%n", population.totalFitness, population.findBestIndividual().getFitnessValue());
+//            System.out.printf("Total Fitness = %s Best Fitness = %s%n", population.totalFitness, population.findBestIndividual().getFitnessValue());
         }
 
         // best indiv
         Individual bestIndiv = population.findBestIndividual();
         System.out.println("bestIndividual = " + bestIndiv);
+
     }
 }

@@ -13,7 +13,7 @@ public class MyFittnessEvaluator implements FitnessEvaluator {
         for(int i = 0; i < problemDimension(); ++i)
             fitness += genotype[i];
 
-        result = fitness / (problemDimension() * 0.5) - 1;
+        result = fitness / (problemDimension() * 0.5 ) - 1;
 
         if (result < 0) result = 0;
 
